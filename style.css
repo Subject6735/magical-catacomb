@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    /* Constants */
+    --table-size: 7;
+    --cell-size: 60px;
+
+    /* Colors */
+    --main-bg-color: rgb(71, 61, 138);
+    --table-bg-color: rgb(178, 195, 245);
+    --cell-border-color: rgb(179, 130, 107);
+    --cell-wall-color: rgb(65, 61, 58);
+    --cell-path-color: rgb(255, 193, 7);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 10fr 1fr;
+
+    background-color: var(--main-bg-color);
+    color: white;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 14pt;
+}
+
+header {
+    justify-self: center;
+    align-self: start;
+    width: 100%;
+
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid white;
+}
+
+main {
+    justify-self: center;
+    align-self: center;
+
+    margin: 20px 0;
+    font-size: 1rem;
+}
+
+footer {
+    justify-self: center;
+    align-self: end;
+    width: 100%;
+
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8rem;
+    border-top: 1px solid white;
+}
+
+button {
+    cursor: initial;
+
+    justify-self: center;
+
+    width: 100px;
+    height: 40px;
+
+    border: 1px solid white;
+    border-radius: 25px;
+    text-align: center;
+}
+
+button.enabled {
+    cursor: pointer;
+}
+
+button.enabled:hover {
+    background-color: var(--main-bg-color);
+    color: white;
+}
+
+/* The game table */
+
+.extended-table {
+    display: none;
+    place-content: center;
+    grid-template-columns: var(--cell-size) var(--cell-size) calc(var(--cell-size) * var(--table-size)) var(--cell-size) var(--cell-size);
+    grid-template-rows: var(--cell-size) var(--cell-size) calc(var(--cell-size) * var(--table-size)) var(--cell-size) var(--cell-size);
+    grid-template-areas:
+        '. . toprow . .'
+        '. . toparea . .'
+        'leftcol leftarea gametable rightarea rightcol'
+        '. . botarea . .'
+        '. . botrow . .';
+}
+
+.extended-table div.border > canvas:hover {
+    cursor: pointer;
+    border-radius: 100px;
+    background-color: rgb(65, 61, 58);
+}
+
+div.toprow {
+    grid-area: toprow;
+
+    width: calc(var(--cell-size) * var(--table-size));
+    height: var(--cell-size);
+
+    display: grid;
+    grid-template-columns: repeat(var(--table-size), var(--cell-size));
+    grid-template-rows: var(--cell-size);
+}
+
+div.toprow > canvas {
+    transform: rotate(90deg);
+}
+
+div.toparea {
+    grid-area: toparea;
+
+    width: calc(var(--cell-size) * var(--table-size));
+    height: var(--cell-size);
+
+    display: grid;
+    grid-template-columns: repeat(var(--table-size), var(--cell-size));
+    grid-template-rows: var(--cell-size);
+}
+
+div.rightcol {
+    grid-area: rightcol;
+
+    width: var(--cell-size);
+    height: calc(var(--cell-size) * var(--table-size));
+
+    display: grid;
+    grid-template-columns: var(--cell-size);
+    grid-template-rows: repeat(var(--table-size), var(--cell-size));
+}
+
+div.rightcol > canvas {
+    transform: rotate(180deg);
+}
+
+div.rightarea {
+    grid-area: rightarea;
+
+    width: var(--cell-size);
+    height: calc(var(--cell-size) * var(--table-size));
+
+    display: grid;
+    grid-template-columns: var(--cell-size);
+    grid-template-rows: repeat(var(--table-size), var(--cell-size));
+}
+
+div.botrow {
+    grid-area: botrow;
+
+    width: calc(var(--cell-size) * var(--table-size));
+    height: var(--cell-size);
+
+    display: grid;
+    grid-template-columns: repeat(var(--table-size), var(--cell-size));
+    grid-template-rows: var(--cell-size);
+}
+
+div.botrow > canvas {
+    transform: rotate(270deg);
+}
+
+div.botarea {
+    grid-area: botarea;
+
+    width: calc(var(--cell-size) * var(--table-size));
+    height: var(--cell-size);
+
+    display: grid;
+    grid-template-columns: repeat(var(--table-size), var(--cell-size));
+    grid-template-rows: var(--cell-size);
+}
+
+div.leftcol {
+    grid-area: leftcol;
+
+    width: var(--cell-size);
+    height: calc(var(--cell-size) * var(--table-size));
+
+    display: grid;
+    grid-template-columns: var(--cell-size);
+    grid-template-rows: repeat(var(--table-size), var(--cell-size));
+}
+
+div.leftarea {
+    grid-area: leftarea;
+
+    width: var(--cell-size);
+    height: calc(var(--cell-size) * var(--table-size));
+
+    display: grid;
+    grid-template-columns: var(--cell-size);
+    grid-template-rows: repeat(var(--table-size), var(--cell-size));
+}
+
+div.game-table {
+    grid-area: gametable;
+
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(var(--table-size), var(--cell-size));
+    grid-template-rows: repeat(var(--table-size), var(--cell-size));
+
+    background-color: var(--table-bg-color);
+}
+
+div.curelemdiv {
+    width: var(--cell-size);
+    height: var(--cell-size);
+}
+
+/* Start screen */
+
+div.parameters {
+    background-color: var(--table-bg-color);
+    color: black;
+    padding: 50px;
+    border: 1px solid white;
+    border-radius: 15px;
+
+    display: grid;
+    gap: 2rem;
+    place-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+        'players players playerinp'
+        'treasures treasures treasureinp'
+        'help start load'
+        'invalidmsg invalidmsg invalidmsg';
+}
+
+div.parameters div#players {
+    grid-area: players;
+}
+
+div.parameters input#player-count {
+    grid-area: playerinp;
+}
+
+div.parameters div#treasures {
+    grid-area: treasures;
+}
+
+div.parameters input#treasure-count {
+    grid-area: treasureinp;
+}
+
+div.parameters button#help {
+    grid-area: help;
+}
+
+div.parameters button#start {
+    grid-area: start;
+}
+
+div.parameters button#load {
+    grid-area: load;
+}
+
+div.parameters div#invalidmsg {
+    grid-area: invalidmsg;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+div.parameters > * {
+    place-self: center;
+}
+
+div.parameters input {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 2rem;
+    border-radius: 15px;
+    border: 3px solid white;
+}
+
+/* Help screen */
+
+div.help ul {
+    margin: 30px;
+    text-align: left;
+}
+
+/* Player details */
+
+div.player-details {
+    margin-top: 40px;
+
+    display: none;
+    place-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+        'players treasures collected curplayertext'
+        'p1 t1 c1 curplayer'
+        'p2 t2 c2 curelemtext'
+        'p3 t3 c3 curelemdiv'
+        'p4 t4 c4 .'
+        'help newgame savegame loadgame';
+
+    text-align: center;
+    background-color: var(--table-bg-color);
+    color: black;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+div.player-details > * {
+    place-self: center;
+}
+
+.playersdiv {
+    grid-area: players;
+}
+
+.treasuresdiv {
+    grid-area: treasures;
+}
+
+.collecteddiv {
+    grid-area: collected;
+}
+
+.curplayertext {
+    grid-area: curplayertext;
+}
+
+.curplayer {
+    grid-area: curplayer;
+}
+
+.curelemtext {
+    grid-area: curelemtext;
+}
+
+.curelemdiv {
+    grid-area: curelemdiv;
+}
+
+div.player-details button#help {
+    grid-area: help;
+}
+
+div.player-details button#new {
+    grid-area: newgame;
+}
+
+div.player-details button#save {
+    grid-area: savegame;
+}
+
+div.player-details button#load {
+    grid-area: loadgame;
+}
+
+div.player-details button {
+    margin-top: 30px;
+}
+
+/* Dialog windows */
+
+.dialog {
+    display: none;
+    gap: 3rem;
+    z-index: 2;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: black;
+    background-color: var(--table-bg-color);
+    border-radius: 15px;
+    text-align: center;
+
+    padding: 50px;
+}
+
+.dialog > * {
+    place-self: center;
+}
+
+div.newgame.dialog button#no,
+div.load.dialog button#no {
+    margin-left: 20px;
+}
+
+/* Body overlay when dialogs are up */
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}

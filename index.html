@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varázslatos katakomba</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <header>Varázslatos katakomba</header>
+    
+    <main>
+
+        <div class="help dialog">
+            <div>Varázslatos katakomba</div>
+            <div>
+                <ul>
+                    <li>a cél, hogy a játékosok összegyűjtsék a számukra kiosztott kincseket, és visszaérjenek a kezdőpontjukra</li>
+                    <li>az a játékos nyer, aki elsőként gyűjti össze a kincseit és elsőként ér vissza a kezdőpontjára</li>
+                    <li>minden játékos csak az aktuális kincsét szedheti fel</li>
+                    <li>minden játékosnak van egy köre, az első játékos kezd, majd jön a második, és így tovább</li>
+                    <li>
+                        a játékos egy körében először beszúrja az aktuális elemet valamelyik nyíl mentén (a nyílra jobb egér gombbal kattintva elforgatható az elem): a másik oldalon az utolsó elem kiesik,
+                        a következő játékos ezt szúrhatja be majd (a játékosok oda nem szúrhatnak be elemet, ahonnan épp kiesett, mert így visszacsinálnák az előző játékos lépését.)
+                    </li>
+                    <li>a játékos ezután léphet egy olyan szobára, ahova vezet út, ha ott éppen olyan kincs van, ami neki kell, azt felszedi (ha a játékos nem akar lépni, akkor az adott pozíciójára kattint.)</li>
+                    <li>ha egy játékost kilöknének, akkor a másik oldalon jelenik meg, viszont a kincs pozíciója rögzített, ha azt löknénk ki, akkor az az aktuális elemmel együtt szúrható be</li>
+                    <li>egy szobában több játékos is lehet</li>
+                </ul>
+            </div>
+            <button class="enabled" id="ok">Ok</button>
+        </div>
+
+        <div class="winner dialog">
+            <div class="player"></div>
+            <button class="enabled" id="newgame">Új játék</button>
+        </div>
+
+        <div class="save dialog">
+            <div>Játék mentése sikeres!</div>
+            <button class="enabled" id="ok">Ok</button>
+        </div>
+
+        <div class="load dialog">
+            <div>Biztosan be szeretnéd tölteni a legutolsó mentett állapotot?</div>
+            <div>
+                <button class="enabled" id="yes">Betöltés</button>
+                <button class="enabled" id="no">Mégse</button>
+            </div>
+        </div>
+
+        <div class="newgame dialog">
+            <div>Biztosan új játékot kezdesz?</div>
+            <div>
+                <button class="enabled" id="newgame">Új játék</button>
+                <button class="enabled" id="no">Mégse</button>
+            </div>
+        </div>
+        
+        <div class="parameters">
+            <div id="players">Játékosok száma (1-4):</div>
+            <input type="text" value="2" id="player-count">
+            <div id="treasures">Játékosonkénti kincsek száma (1-24):</div>
+            <input type="text" value="2" id="treasure-count">
+            <button class="enabled" id="help">Játékleírás</button>
+            <button class="enabled" id="start">Start</button>
+            <button class="enabled" id="load">Játék betöltése</button>
+            <div id="invalidmsg" hidden>Nem megfelelő játékos vagy kincskártya szám!</div>
+        </div>
+
+        <div class="extended-table">
+            <div class="toprow border"></div>
+            <div class="toparea spacing"></div>
+
+            <div class="rightcol border"></div>
+            <div class="rightarea spacing"></div>
+
+            <div class="botrow border"></div>
+            <div class="botarea spacing"></div>
+
+            <div class="leftcol border"></div>
+            <div class="leftarea spacing"></div>
+
+            <div class="game-table"></div>
+        </div>
+        
+        
+        <div class="player-details" hidden>
+            <div class="playersdiv"></div>
+            <div class="treasuresdiv"></div>
+            <div class="collecteddiv"></div>
+            <div class="curplayertext"></div>
+            <div class="curplayer"></div>
+            <div class="curelemtext"></div>
+            <div class="curelemdiv"></div>
+            <button class="enabled" id="help">Játékleírás</button>
+            <button class="enabled" id="new">Új játék</button>
+            <button class="enabled" id="save">Játék mentése</button>
+            <button class="enabled" id="load">Játék betöltése</button>
+        </div>
+    </main>
+    
+    <footer>© ELTE IK Webprogramozás 2021.1 - JavaScript Beadandó | Készítette: Maráki Deme (CRMAL9)</footer>
+    
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/drawing.js"></script>
+    <script src="./scripts/playerturn.js"></script>
+    <script src="./scripts/currentelem.js"></script>
+    <script src="./scripts/graph.js"></script>
+    <script src="./scripts/updatedata.js"></script>
+    <script src="./scripts/storage.js"></script>
+    <script src="./scripts/setup.js"></script>
+    <script src="./scripts/events.js"></script>
+
+</body>
+</html>

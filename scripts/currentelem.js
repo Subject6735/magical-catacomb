@@ -118,6 +118,7 @@ const disableContextMenu = (e) => {
 
 function updateCells(curelem, curelemCopy, firstCell, lastCell) {
     // Generate the canvas
+    curelemCopy.getContext('2d').clearRect(0, 0, curelemCopy.width, curelemCopy.height);
     generateCell(curelemCopy, null);
 
     curelemCopy.classList.remove('curelem');
@@ -145,7 +146,10 @@ function updateCells(curelem, curelemCopy, firstCell, lastCell) {
     firstCell.replaceWith(curelemCopy);
 
     let lastCellCopy = lastCell.cloneNode(true);
+
+    lastCellCopy.getContext('2d').clearRect(0, 0, lastCellCopy.width, lastCellCopy.height);
     generateCell(lastCellCopy, null);
+
     lastCellCopy.classList.add('curelem');
     lastCellCopy.removeAttribute('row');
     lastCellCopy.removeAttribute('col');

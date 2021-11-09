@@ -20,25 +20,43 @@ const movePlayer = (e) => {
         if (e.target.hasAttribute('players')) targetplayers = e.target.getAttribute('players').split(',');
 
         if (curplayer === 'p1') {
-            generatePlayers(curPlayerCell, null, players[1], players[2], players[3]);
-            generatePlayers(e.target, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
-            curPlayerCell.setAttribute('players', `null,${players[1]},${players[2]},${players[3]}`);
-            e.target.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+            if (curPlayerCell !== e.target) {
+                generatePlayers(curPlayerCell, null, players[1], players[2], players[3]);
+                generatePlayers(e.target, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `null,${players[1]},${players[2]},${players[3]}`);
+                e.target.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
 
-            if (curPlayerCell.hasAttribute('treasure')) {
-                drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
-            }
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
+                }
 
-            if (e.target.hasAttribute('treasure')) {
-                let treasure = e.target.getAttribute('treasure');
+                if (e.target.hasAttribute('treasure')) {
+                    let treasure = e.target.getAttribute('treasure');
 
-                if (treasure === playerTreasures[0][0]) {
-                    playerTreasures[0].reverse().pop();
-                    playerTreasures[0].reverse();
-                    ++collectedTreasures[0];
-                    e.target.removeAttribute('treasure');
-                } else {
-                    drawTreasure(e.target, treasure);
+                    if (treasure === playerTreasures[0][0]) {
+                        playerTreasures[0].reverse().pop();
+                        playerTreasures[0].reverse();
+                        ++collectedTreasures[0];
+                        e.target.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(e.target, treasure);
+                    }
+                }
+            } else {
+                generatePlayers(curPlayerCell, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    let treasure = curPlayerCell.getAttribute('treasure');
+
+                    if (treasure === playerTreasures[0][0]) {
+                        playerTreasures[0].reverse().pop();
+                        playerTreasures[0].reverse();
+                        ++collectedTreasures[0];
+                        curPlayerCell.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(curPlayerCell, treasure);
+                    }
                 }
             }
 
@@ -52,25 +70,43 @@ const movePlayer = (e) => {
             }
         }
         if (curplayer === 'p2') {
-            generatePlayers(curPlayerCell, players[0], null, players[2], players[3]);
-            generatePlayers(e.target, targetplayers[0], players[1], targetplayers[2], targetplayers[3]);
-            curPlayerCell.setAttribute('players', `${players[0]},null,${players[2]},${players[3]}`);
-            e.target.setAttribute('players', `${targetplayers[0]},${players[1]},${targetplayers[2]},${targetplayers[3]}`);
+            if (curPlayerCell !== e.target) {
+                generatePlayers(curPlayerCell, players[0], null, players[2], players[3]);
+                generatePlayers(e.target, targetplayers[0], players[1], targetplayers[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${players[0]},null,${players[2]},${players[3]}`);
+                e.target.setAttribute('players', `${targetplayers[0]},${players[1]},${targetplayers[2]},${targetplayers[3]}`);
 
-            if (curPlayerCell.hasAttribute('treasure')) {
-                drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
-            }
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
+                }
 
-            if (e.target.hasAttribute('treasure')) {
-                let treasure = e.target.getAttribute('treasure');
+                if (e.target.hasAttribute('treasure')) {
+                    let treasure = e.target.getAttribute('treasure');
 
-                if (treasure === playerTreasures[1][0]) {
-                    playerTreasures[1].reverse().pop();
-                    playerTreasures[1].reverse();
-                    ++collectedTreasures[1];
-                    e.target.removeAttribute('treasure');
-                } else {
-                    drawTreasure(e.target, treasure);
+                    if (treasure === playerTreasures[1][0]) {
+                        playerTreasures[1].reverse().pop();
+                        playerTreasures[1].reverse();
+                        ++collectedTreasures[1];
+                        e.target.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(e.target, treasure);
+                    }
+                }
+            } else {
+                generatePlayers(curPlayerCell, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    let treasure = curPlayerCell.getAttribute('treasure');
+
+                    if (treasure === playerTreasures[1][0]) {
+                        playerTreasures[1].reverse().pop();
+                        playerTreasures[1].reverse();
+                        ++collectedTreasures[1];
+                        curPlayerCell.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(curPlayerCell, treasure);
+                    }
                 }
             }
 
@@ -84,25 +120,43 @@ const movePlayer = (e) => {
             }
         }
         if (curplayer === 'p3') {
-            generatePlayers(curPlayerCell, players[0], players[1], null, players[3]);
-            generatePlayers(e.target, targetplayers[0], targetplayers[1], players[2], targetplayers[3]);
-            curPlayerCell.setAttribute('players', `${players[0]},${players[1]},null,${players[3]}`);
-            e.target.setAttribute('players', `${targetplayers[0]},${targetplayers[1]},${players[2]},${targetplayers[3]}`);
+            if (curPlayerCell !== e.target) {
+                generatePlayers(curPlayerCell, players[0], players[1], null, players[3]);
+                generatePlayers(e.target, targetplayers[0], targetplayers[1], players[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${players[0]},${players[1]},null,${players[3]}`);
+                e.target.setAttribute('players', `${targetplayers[0]},${targetplayers[1]},${players[2]},${targetplayers[3]}`);
 
-            if (curPlayerCell.hasAttribute('treasure')) {
-                drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
-            }
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
+                }
 
-            if (e.target.hasAttribute('treasure')) {
-                let treasure = e.target.getAttribute('treasure');
+                if (e.target.hasAttribute('treasure')) {
+                    let treasure = e.target.getAttribute('treasure');
 
-                if (treasure === playerTreasures[2][0]) {
-                    playerTreasures[2].reverse().pop();
-                    playerTreasures[2].reverse();
-                    ++collectedTreasures[2];
-                    e.target.removeAttribute('treasure');
-                } else {
-                    drawTreasure(e.target, treasure);
+                    if (treasure === playerTreasures[2][0]) {
+                        playerTreasures[2].reverse().pop();
+                        playerTreasures[2].reverse();
+                        ++collectedTreasures[2];
+                        e.target.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(e.target, treasure);
+                    }
+                }
+            } else {
+                generatePlayers(curPlayerCell, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    let treasure = curPlayerCell.getAttribute('treasure');
+
+                    if (treasure === playerTreasures[2][0]) {
+                        playerTreasures[2].reverse().pop();
+                        playerTreasures[2].reverse();
+                        ++collectedTreasures[2];
+                        curPlayerCell.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(curPlayerCell, treasure);
+                    }
                 }
             }
 
@@ -116,25 +170,43 @@ const movePlayer = (e) => {
             }
         }
         if (curplayer === 'p4') {
-            generatePlayers(curPlayerCell, players[0], players[1], players[2], null);
-            generatePlayers(e.target, targetplayers[0], targetplayers[1], targetplayers[2], players[3]);
-            curPlayerCell.setAttribute('players', `${players[0]},${players[1]},${players[2]},null`);
-            e.target.setAttribute('players', `${targetplayers[0]},${targetplayers[1]},${targetplayers[2]},${players[3]}`);
+            if (curPlayerCell !== e.target) {
+                generatePlayers(curPlayerCell, players[0], players[1], players[2], null);
+                generatePlayers(e.target, targetplayers[0], targetplayers[1], targetplayers[2], players[3]);
+                curPlayerCell.setAttribute('players', `${players[0]},${players[1]},${players[2]},null`);
+                e.target.setAttribute('players', `${targetplayers[0]},${targetplayers[1]},${targetplayers[2]},${players[3]}`);
 
-            if (curPlayerCell.hasAttribute('treasure')) {
-                drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
-            }
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    drawTreasure(curPlayerCell, curPlayerCell.getAttribute('treasure'));
+                }
 
-            if (e.target.hasAttribute('treasure')) {
-                let treasure = e.target.getAttribute('treasure');
+                if (e.target.hasAttribute('treasure')) {
+                    let treasure = e.target.getAttribute('treasure');
 
-                if (treasure === playerTreasures[3][0]) {
-                    playerTreasures[3].reverse().pop();
-                    playerTreasures[3].reverse();
-                    ++collectedTreasures[3];
-                    e.target.removeAttribute('treasure');
-                } else {
-                    drawTreasure(e.target, treasure);
+                    if (treasure === playerTreasures[3][0]) {
+                        playerTreasures[3].reverse().pop();
+                        playerTreasures[3].reverse();
+                        ++collectedTreasures[3];
+                        e.target.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(e.target, treasure);
+                    }
+                }
+            } else {
+                generatePlayers(curPlayerCell, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+
+                if (curPlayerCell.hasAttribute('treasure')) {
+                    let treasure = curPlayerCell.getAttribute('treasure');
+
+                    if (treasure === playerTreasures[3][0]) {
+                        playerTreasures[3].reverse().pop();
+                        playerTreasures[3].reverse();
+                        ++collectedTreasures[3];
+                        curPlayerCell.removeAttribute('treasure');
+                    } else {
+                        drawTreasure(curPlayerCell, treasure);
+                    }
                 }
             }
 

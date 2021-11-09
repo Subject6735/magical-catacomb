@@ -272,42 +272,6 @@ function distributeTreasures() {
     }
 }
 
-// Generates up to four players on a cell
-function generatePlayers(canvas, p1, p2, p3, p4) {
-    generateCell(canvas, null);
-
-    let transformation = [...canvas.style.transform.toString()].splice(0, 6).join('');
-
-    let rotateNum = getRotateNum(canvas.style.transform);
-
-    if (transformation === 'rotate' && (rotateNum === 0 || rotateNum % 360 === 0)) {
-        drawPlayer(canvas, p1, 15, 15);
-        drawPlayer(canvas, p2, 45, 15);
-        drawPlayer(canvas, p3, 15, 45);
-        drawPlayer(canvas, p4, 45, 45);
-    }
-    if (transformation === 'rotate' && (rotateNum === 90 || rotateNum % 360 === 90)) {
-        drawPlayer(canvas, p1, 15, 45);
-        drawPlayer(canvas, p2, 15, 15);
-        drawPlayer(canvas, p3, 45, 45);
-        drawPlayer(canvas, p4, 45, 15);
-    }
-    if (transformation === 'rotate' && (rotateNum === 180 || rotateNum % 360 === 180)) {
-        drawPlayer(canvas, p1, 45, 45);
-        drawPlayer(canvas, p2, 15, 45);
-        drawPlayer(canvas, p3, 45, 15);
-        drawPlayer(canvas, p4, 15, 15);
-    }
-    if (transformation === 'rotate' && (rotateNum === 270 || rotateNum % 360 === 270)) {
-        drawPlayer(canvas, p1, 45, 15);
-        drawPlayer(canvas, p2, 45, 45);
-        drawPlayer(canvas, p3, 15, 15);
-        drawPlayer(canvas, p4, 15, 45);
-    }
-
-    canvas.setAttribute('players', `${p1},${p2},${p3},${p4}`);
-}
-
 // Places the players
 function placePlayers() {
     const firstCorner = document.querySelector(`canvas.cell[row='0'][col='0']`);

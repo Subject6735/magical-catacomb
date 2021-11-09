@@ -116,39 +116,30 @@ const disableContextMenu = (e) => {
     }
 };
 
-function updateCells(curelemCopy, firstCell, lastCell) {
-    const curelem = document.querySelector('canvas.curelem');
-
+function updateCells(curelem, curelemCopy, firstCell, lastCell) {
+    // Generate the canvas
     generateCell(curelemCopy, null);
-
-    if (curelemCopy.hasAttribute('treasure')) {
-        let treasure = curelemCopy.getAttribute('treasure');
-        drawTreasure(curelemCopy, treasure);
-    }
-
-    let treasure;
-    let treasurePresent = false;
-
-    if (lastCell.hasAttribute('treasure')) {
-        treasure = lastCell.getAttribute('treasure');
-        treasurePresent = true;
-        lastCell.removeAttribute('treasure');
-    }
 
     curelemCopy.classList.remove('curelem');
 
+    // Check if the curelem had treasure
+    let curelemTreasure = undefined;
+
+    if (curelem.hasAttribute('treasure')) {
+        curelemTreasure = curelem.getAttribute('treasure');
+    }
+
+    // Check if the last cell had players, then draw them on the cell
     if (lastCell.hasAttribute('players')) {
         let players = lastCell.getAttribute('players').split(',');
-
         generatePlayers(curelemCopy, players[0], players[1], players[2], players[3]);
-
-        // Draw the treasure if the cell had one
-        if (treasurePresent) {
-            drawTreasure(curelemCopy, treasure);
-        }
-
         curelemCopy.setAttribute('players', lastCell.getAttribute('players'));
         lastCell.removeAttribute('players');
+    }
+
+    // Only draw the treasure after the players were drawn
+    if (curelemTreasure !== undefined) {
+        drawTreasure(curelemCopy, curelemTreasure);
     }
 
     firstCell.replaceWith(curelemCopy);
@@ -159,8 +150,11 @@ function updateCells(curelemCopy, firstCell, lastCell) {
     lastCellCopy.removeAttribute('row');
     lastCellCopy.removeAttribute('col');
 
-    lastCellCopy.setAttribute('treasure', treasure);
-    drawTreasure(lastCellCopy, treasure);
+    if (lastCell.hasAttribute('treasure')) {
+        let treasure = lastCell.getAttribute('treasure');
+        drawTreasure(lastCellCopy, treasure);
+        lastCellCopy.setAttribute('treasure', treasure);
+    }
 
     curelem.replaceWith(lastCellCopy);
 }
@@ -179,7 +173,7 @@ const insertCurelem = (e) => {
             const lastCell = document.querySelector(`canvas.cell[row='${tableSize - 1}'][col='${arrowpos}']`);
             const curelemCopy = curelem.cloneNode(true);
 
-            updateCells(curelemCopy, firstCell, lastCell);
+            updateCells(curelem, curelemCopy, firstCell, lastCell);
 
             for (let i = 1; i < tableSize; ++i) {
                 const cell = document.querySelector(`canvas.cell[row='${i}'][col='${arrowpos}']`);
@@ -198,7 +192,7 @@ const insertCurelem = (e) => {
             const lastCell = document.querySelector(`canvas.cell[row='${arrowpos}'][col='0']`);
             const curelemCopy = curelem.cloneNode(true);
 
-            updateCells(curelemCopy, firstCell, lastCell);
+            updateCells(curelem, curelemCopy, firstCell, lastCell);
 
             for (let j = tableSize - 2; j >= 0; --j) {
                 const cell = document.querySelector(`canvas.cell[row='${arrowpos}'][col='${j}']`);
@@ -217,7 +211,7 @@ const insertCurelem = (e) => {
             const lastCell = document.querySelector(`canvas.cell[row='0'][col='${arrowpos}']`);
             const curelemCopy = curelem.cloneNode(true);
 
-            updateCells(curelemCopy, firstCell, lastCell);
+            updateCells(curelem, curelemCopy, firstCell, lastCell);
 
             for (let i = tableSize - 2; i >= 0; --i) {
                 const cell = document.querySelector(`canvas.cell[row='${i}'][col='${arrowpos}']`);
@@ -236,7 +230,7 @@ const insertCurelem = (e) => {
             const lastCell = document.querySelector(`canvas.cell[row='${arrowpos}'][col='${tableSize - 1}']`);
             const curelemCopy = curelem.cloneNode(true);
 
-            updateCells(curelemCopy, firstCell, lastCell);
+            updateCells(curelem, curelemCopy, firstCell, lastCell);
 
             for (let j = 1; j < tableSize; ++j) {
                 const cell = document.querySelector(`canvas.cell[row='${arrowpos}'][col='${j}']`);

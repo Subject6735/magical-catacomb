@@ -93,8 +93,8 @@ const movePlayer = (e) => {
                     }
                 }
             } else {
-                generatePlayers(curPlayerCell, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
-                curPlayerCell.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+                generatePlayers(curPlayerCell, targetplayers[0], players[1], targetplayers[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${targetplayers[0]},${players[1]},${targetplayers[2]},${targetplayers[3]}`);
 
                 if (curPlayerCell.hasAttribute('treasure')) {
                     let treasure = curPlayerCell.getAttribute('treasure');
@@ -143,8 +143,8 @@ const movePlayer = (e) => {
                     }
                 }
             } else {
-                generatePlayers(curPlayerCell, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
-                curPlayerCell.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+                generatePlayers(curPlayerCell, targetplayers[0], targetplayers[1], players[2], targetplayers[3]);
+                curPlayerCell.setAttribute('players', `${targetplayers[0]},${targetplayers[1]},${players[2]},${targetplayers[3]}`);
 
                 if (curPlayerCell.hasAttribute('treasure')) {
                     let treasure = curPlayerCell.getAttribute('treasure');
@@ -193,8 +193,8 @@ const movePlayer = (e) => {
                     }
                 }
             } else {
-                generatePlayers(curPlayerCell, players[0], targetplayers[1], targetplayers[2], targetplayers[3]);
-                curPlayerCell.setAttribute('players', `${players[0]},${targetplayers[1]},${targetplayers[2]},${targetplayers[3]}`);
+                generatePlayers(curPlayerCell, targetplayers[0], targetplayers[1], targetplayers[2], players[3]);
+                curPlayerCell.setAttribute('players', `${targetplayers[0]},${targetplayers[1]},${targetplayers[2]},${players[3]}`);
 
                 if (curPlayerCell.hasAttribute('treasure')) {
                     let treasure = curPlayerCell.getAttribute('treasure');

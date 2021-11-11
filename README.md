@@ -52,3 +52,7 @@ A fegyelmi vétség legsúlyosabb következménye a hallgató elbocsátása az e
 - [x] Mentés: játék közben egy gombra kattintva elmenthető az aktuális állapot (0,5 pont)
 - [x] Mentés: a kezdőképernyőn megjelenik, ha van mentett állapot (0,5 pont)
 - [x] Mentés: a kezdőképernyőn megjelenő mentett állapot betölthető (1 pont)
+
+# Az oldal elérhető itt
+
+[Varázslatos katakomba](https://subject6735.github.io/magical-catacomb/)

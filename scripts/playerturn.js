@@ -272,6 +272,8 @@ const movePlayer = (e) => {
         const btnload = document.querySelector('div.player-details button#load');
         btnload.disabled = false;
         btnload.classList.add('enabled');
+		
+		savedGameExists();
     }
 };
 

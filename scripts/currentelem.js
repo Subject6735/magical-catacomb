@@ -258,6 +258,8 @@ const insertCurelem = (e) => {
         const btnload = document.querySelector('div.player-details button#load');
         btnload.disabled = true;
         btnload.classList.remove('enabled');
+		
+		savedGameExists();
     }
 };
 

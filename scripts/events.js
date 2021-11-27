@@ -2,7 +2,7 @@
 window.addEventListener('load', () => {
     playerCount = parseInt(playerCountInp.value);
     treasuresPerPlayer = parseInt(treasureCountInp.value);
-    document.querySelector('div#treasures').innerHTML = `Játékosonkénti kincskártyák száma: (1 - ${24 / playerCount})`;
+    document.querySelector('div#treasures').innerHTML = `Treasures per player: (1 - ${24 / playerCount})`;
     savedGameExists();
 });
 
@@ -66,9 +66,9 @@ function checkParameters() {
         treasureCountInp.style.border = '3px solid red';
 
         if (!validPlayerVal) {
-            document.querySelector('div#treasures').innerHTML = `Nem megfelelő játékosszám!`;
+            document.querySelector('div#treasures').innerHTML = `Invalid playercount!`;
         } else {
-            document.querySelector('div#treasures').innerHTML = `Játékosonkénti kincskártyák száma: (1 - ${24 / playerCount})`;
+            document.querySelector('div#treasures').innerHTML = `Treasures per player: (1 - ${24 / playerCount})`;
         }
 
         document.querySelector('div#invalidmsg').hidden = false;
@@ -77,7 +77,7 @@ function checkParameters() {
     } else {
         playerCountInp.style.border = '3px solid white';
         treasureCountInp.style.border = '3px solid white';
-        document.querySelector('div#treasures').innerHTML = `Játékosonkénti kincskártyák száma: (1 - ${24 / playerCount})`;
+        document.querySelector('div#treasures').innerHTML = `Treasures per player: (1 - ${24 / playerCount})`;
 
         document.querySelector('div#invalidmsg').hidden = true;
         gameStartBtn.classList.add('enabled');
@@ -95,11 +95,11 @@ gameStartBtn.addEventListener('click', () => {
     document.querySelector('div.extended-table').style.display = 'grid';
     document.querySelector('div.player-details').style.display = 'grid';
 
-    document.querySelector('div.playersdiv').innerHTML = 'Játékosok';
-    document.querySelector('div.treasuresdiv').innerHTML = 'Aktuális kincs';
-    document.querySelector('div.collecteddiv').innerHTML = 'Összegyűjtve';
-    document.querySelector('div.curplayertext').innerHTML = 'Aktuális játékos';
-    document.querySelector('div.curelemtext').innerHTML = 'Aktuális elem';
+    document.querySelector('div.playersdiv').innerHTML = 'Players';
+    document.querySelector('div.treasuresdiv').innerHTML = 'Current treasure';
+    document.querySelector('div.collecteddiv').innerHTML = 'Collected';
+    document.querySelector('div.curplayertext').innerHTML = 'Current player';
+    document.querySelector('div.curelemtext').innerHTML = 'Current element';
 
     disabledInsert = 'canvas#placeholder';
 

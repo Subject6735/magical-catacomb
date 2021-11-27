@@ -64,7 +64,7 @@ const movePlayer = (e) => {
             const winnerdiv = document.querySelector('div.winner');
 
             if (collectedTreasures[0] === treasuresPerPlayer && e.target.matches(p1start)) {
-                winnerdiv.querySelector('div.player').innerHTML = `Játékos 1 Nyert!`;
+                winnerdiv.querySelector('div.player').innerHTML = `Player 1 won!`;
                 winnerdiv.style.display = 'grid';
                 document.querySelector('div.overlay').style.display = 'block';
             }
@@ -114,7 +114,7 @@ const movePlayer = (e) => {
             const winnerdiv = document.querySelector('div.winner');
 
             if (collectedTreasures[1] === treasuresPerPlayer && e.target.matches(p2start)) {
-                winnerdiv.querySelector('div.player').innerHTML = `Játékos 2 Nyert!`;
+                winnerdiv.querySelector('div.player').innerHTML = `Player 2 won!`;
                 winnerdiv.style.display = 'grid';
                 document.querySelector('div.overlay').style.display = 'block';
             }
@@ -164,7 +164,7 @@ const movePlayer = (e) => {
             const winnerdiv = document.querySelector('div.winner');
 
             if (collectedTreasures[2] === treasuresPerPlayer && e.target.matches(p3start)) {
-                winnerdiv.querySelector('div.player').innerHTML = `Játékos 3 Nyert!`;
+                winnerdiv.querySelector('div.player').innerHTML = `Player 3 won!`;
                 winnerdiv.style.display = 'grid';
                 document.querySelector('div.overlay').style.display = 'block';
             }
@@ -214,7 +214,7 @@ const movePlayer = (e) => {
             const winnerdiv = document.querySelector('div.winner');
 
             if (collectedTreasures[3] === treasuresPerPlayer && e.target.matches(p4start)) {
-                winnerdiv.querySelector('div.player').innerHTML = `Játékos 4 Nyert!`;
+                winnerdiv.querySelector('div.player').innerHTML = `Player 4 won!`;
                 winnerdiv.style.display = 'grid';
                 document.querySelector('div.overlay').style.display = 'block';
             }
@@ -272,8 +272,8 @@ const movePlayer = (e) => {
         const btnload = document.querySelector('div.player-details button#load');
         btnload.disabled = false;
         btnload.classList.add('enabled');
-		
-		savedGameExists();
+
+        savedGameExists();
     }
 };
 

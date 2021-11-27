@@ -71,11 +71,11 @@ document.querySelectorAll('button#load').forEach((elem) =>
             document.querySelector('div.extended-table').style.display = 'grid';
             document.querySelector('div.player-details').style.display = 'grid';
 
-            document.querySelector('div.playersdiv').innerHTML = 'Játékosok';
-            document.querySelector('div.treasuresdiv').innerHTML = 'Aktuális kincs';
-            document.querySelector('div.collecteddiv').innerHTML = 'Összegyűjtve';
-            document.querySelector('div.curplayertext').innerHTML = 'Aktuális játékos';
-            document.querySelector('div.curelemtext').innerHTML = 'Aktuális elem';
+            document.querySelector('div.playersdiv').innerHTML = 'Players';
+            document.querySelector('div.treasuresdiv').innerHTML = 'Current treasure';
+            document.querySelector('div.collecteddiv').innerHTML = 'Collected';
+            document.querySelector('div.curplayertext').innerHTML = 'Current player';
+            document.querySelector('div.curelemtext').innerHTML = 'Current element';
 
             let loadedGameData = JSON.parse(localStorage.getItem('savedgamedata'));
 

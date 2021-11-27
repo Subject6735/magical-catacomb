@@ -10,7 +10,7 @@ function refreshCurPlayer() {
     curplayerdiv.appendChild(playerIcon);
 
     const playerName = document.createElement('div');
-    playerName.innerHTML = `Játékos ${curplayer.toString().charAt(1)}`;
+    playerName.innerHTML = `Player ${curplayer.toString().charAt(1)}`;
     curplayerdiv.appendChild(playerName);
 }
 
@@ -43,10 +43,10 @@ function displayCurrentTreasure() {
         drawTreasure(treasureIcon, curTreasure);
 
         const treasureName = document.createElement('div');
-        if (curTreasure === 'diamond') treasureName.innerHTML = 'Gyémánt';
-        else if (curTreasure === 'emerald') treasureName.innerHTML = 'Smaragd';
-        else if (curTreasure === 'amethyst') treasureName.innerHTML = 'Ametiszt';
-        else if (curTreasure === 'ruby') treasureName.innerHTML = 'Rubin';
+        if (curTreasure === 'diamond') treasureName.innerHTML = 'Diamond';
+        else if (curTreasure === 'emerald') treasureName.innerHTML = 'Emerald';
+        else if (curTreasure === 'amethyst') treasureName.innerHTML = 'Amethyst';
+        else if (curTreasure === 'ruby') treasureName.innerHTML = 'Ruby';
 
         playerTreasureDiv.innerHTML = '';
         playerTreasureDiv.appendChild(treasureIcon);
@@ -55,13 +55,13 @@ function displayCurrentTreasure() {
         if (collectedTreasures[i] === treasuresPerPlayer) {
             playerTreasureDiv.innerHTML = '';
 
-            playerTreasureDiv.innerHTML = 'Menj vissza a kezdőpontodra!';
+            playerTreasureDiv.innerHTML = 'Go back to your starting position!';
             playerTreasureDiv.innerHTML += '<br>';
 
-            if (i === 0) playerTreasureDiv.innerHTML += '(bal felső sarok)';
-            else if (i === 1) playerTreasureDiv.innerHTML += '(jobb felső sarok)';
-            else if (i === 2) playerTreasureDiv.innerHTML += '(bal alsó sarok)';
-            else if (i === 3) playerTreasureDiv.innerHTML += '(jobb alsó sarok)';
+            if (i === 0) playerTreasureDiv.innerHTML += '(top left corner)';
+            else if (i === 1) playerTreasureDiv.innerHTML += '(top right corner)';
+            else if (i === 2) playerTreasureDiv.innerHTML += '(bottom left corner)';
+            else if (i === 3) playerTreasureDiv.innerHTML += '(bottom right corner)';
         }
     }
 }

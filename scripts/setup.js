@@ -327,7 +327,7 @@ function generatePlayerDetails() {
         player.appendChild(playerIcon);
 
         const playerName = document.createElement('div');
-        playerName.innerHTML = `Játékos ${i + 1}`;
+        playerName.innerHTML = `Player ${i + 1}`;
         player.appendChild(playerName);
 
         const treasure = document.createElement('div');
@@ -354,6 +354,6 @@ function generatePlayerDetails() {
     curplayerdiv.appendChild(playerIcon1);
 
     const playerName1 = document.createElement('div');
-    playerName1.innerHTML = `Játékos 1`;
+    playerName1.innerHTML = `Player 1`;
     curplayerdiv.appendChild(playerName1);
 }

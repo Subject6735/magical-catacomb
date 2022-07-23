@@ -48,4 +48,4 @@ This solution was submitted and created by the above student for the Web Program
 
 # The page is available here
 
-[Magical catacomb](https://subject6735.github.io/magical-catacomb/)
+[Magical catacomb](https://mdeme01.github.io/magical-catacomb/)
